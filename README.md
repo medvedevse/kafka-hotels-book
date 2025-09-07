@@ -1,18 +1,18 @@
 ### Библиотеки для работы с kafka
-`github.com/confluentinc/confluent-kafka-go`
-`github.com/IBM/sarama`
-`github.com/segmentio/kafka-go`
-`github.com/lovoo/goka`
+`github.com/confluentinc/confluent-kafka-go`<br>
+`github.com/IBM/sarama`<br>
+`github.com/segmentio/kafka-go`<br>
+`github.com/lovoo/goka`<br>
 
 ### Билд
-`docker-compose build`
-`docker-compose up -d`
+`docker-compose build`<br>
+`docker-compose up -d`<br>
 
 ### Запустить
-`docker-compose down -v`
-`docker-compose up -d`
-`go run ./cmd/producer` - запуск продюсера
-`go run ./cmd/consumer` - запуск консьюмера
+`docker-compose down -v`<br>
+`docker-compose up -d`<br>
+`go run ./cmd/producer` - запуск продюсера<br>
+`go run ./cmd/consumer` - запуск консьюмера<br>
 
 ### Как работает идемпотентность
 1. **Producer отправляет сообщения** с уникальными ID
