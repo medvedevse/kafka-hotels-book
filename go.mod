@@ -1,4 +1,4 @@
-module kafka-task
+module github.com/medvedevse/kafka-hotels-book
 
 go 1.24.3
 

@@ -6,9 +6,9 @@ import (
 	"math/rand"
 	"time"
 
-	"kafka-task/config"
-	"kafka-task/internal/entity"
-	"kafka-task/internal/kafka"
+	"github.com/medvedevse/kafka-hotels-book/config"
+	"github.com/medvedevse/kafka-hotels-book/internal/entity"
+	"github.com/medvedevse/kafka-hotels-book/internal/kafka"
 )
 
 func main() {

@@ -9,8 +9,8 @@ import (
 	"log"
 	"time"
 
-	"kafka-task/internal/entity"
-	"kafka-task/internal/repository/redis"
+	"github.com/medvedevse/kafka-hotels-book/internal/entity"
+	"github.com/medvedevse/kafka-hotels-book/internal/repository/redis"
 )
 
 type IdempotentHandler struct {

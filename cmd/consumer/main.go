@@ -6,9 +6,9 @@ import (
 	"os/signal"
 	"syscall"
 
-	"kafka-task/config"
-	"kafka-task/internal/handler"
-	"kafka-task/internal/kafka"
+	"github.com/medvedevse/kafka-hotels-book/config"
+	"github.com/medvedevse/kafka-hotels-book/internal/handler"
+	"github.com/medvedevse/kafka-hotels-book/internal/kafka"
 )
 
 func main() {
