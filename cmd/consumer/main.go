@@ -13,19 +13,18 @@ import (
 
 func main() {
 	cfg := config.NewConfig()
-	h := handler.NewHandler()
 
-	idemHandler, err := handler.NewIdempotentHandler(cfg.RedisAddr)
+	h, err := handler.NewHandler(cfg.RedisAddr)
 	if err != nil {
-		log.Fatalf("Failed to create idempotent handler: %v", err)
+		log.Fatalf("Failed to create message handler: %v", err)
 	}
 	defer func() {
-		if closeErr := idemHandler.Close(); closeErr != nil {
+		if closeErr := h.Close(); closeErr != nil {
 			log.Printf("Error closing handler: %v", closeErr)
 		}
 	}()
 
-	c, err := kafka.NewConsumer(h, idemHandler, cfg.Addr, cfg.Topic, cfg.ConsumerGroup)
+	c, err := kafka.NewConsumer(h, cfg.Addr, cfg.Topic, cfg.ConsumerGroup)
 	if err != nil {
 		log.Fatal(err)
 	}

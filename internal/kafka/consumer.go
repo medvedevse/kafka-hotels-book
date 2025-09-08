@@ -18,18 +18,13 @@ type Handler interface {
 	HandlerMessage(message []byte) error
 }
 
-type IdemHandler interface {
-	HandlerMessage(msg []byte) error
-}
-
 type Consumer struct {
-	consumer    *kafka.Consumer
-	handler     Handler
-	idemHandler IdemHandler
-	stop        bool
+	consumer *kafka.Consumer
+	handler  Handler
+	stop     bool
 }
 
-func NewConsumer(handler Handler, idemHandler IdemHandler, addr []string, topic, consumerGroup string) (*Consumer, error) {
+func NewConsumer(handler Handler, addr []string, topic, consumerGroup string) (*Consumer, error) {
 	conf := &kafka.ConfigMap{
 		"bootstrap.servers": strings.Join(addr, ","),
 		"group.id":          consumerGroup,
@@ -54,9 +49,8 @@ func NewConsumer(handler Handler, idemHandler IdemHandler, addr []string, topic,
 	}
 
 	return &Consumer{
-		consumer:    c,
-		handler:     handler,
-		idemHandler: idemHandler,
+		consumer: c,
+		handler:  handler,
 	}, nil
 }
 
@@ -77,11 +71,6 @@ func (c *Consumer) Start() {
 
 		// обработка сообщений
 		if err := c.handler.HandlerMessage(msg.Value); err != nil {
-			log.Print(err)
-			continue
-		}
-
-		if err := c.idemHandler.HandlerMessage(msg.Value); err != nil {
 			log.Print(err)
 			continue
 		}
